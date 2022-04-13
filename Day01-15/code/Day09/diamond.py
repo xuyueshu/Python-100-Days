@@ -34,8 +34,7 @@ class E(D):
     def foo(self):
         print('foo in E')
         super().foo()
-        super(B, self).foo()
-        super(C, self).foo()
+
 
 
 if __name__ == '__main__':
@@ -43,3 +42,5 @@ if __name__ == '__main__':
     d.foo()
     e = E()
     e.foo()
+    ##Python中针对类提供了一个内置属性__mro__可以查看方法的搜索顺序
+    print(E.__mro__)
