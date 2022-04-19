@@ -19,17 +19,17 @@ print('准备登录服务器')login()
 
 这两个文件的文件结构如下图所示：
 
-![Snipaste_2022-04-12_16-45-24](C:\Users\Administrator\Desktop\Snipaste_2022-04-12_16-45-24.png)
+![Snipaste_2022-04-12_16-45-24](../pictures/Snipaste_2022-04-12_16-45-24.png)
 
 
 
 此时，你在PyCharm中打开main.py，你就会发现红色的波浪线，如下图所示。
 
-![Snipaste_2022-04-12_16-48-39](C:\Users\Administrator\Desktop\Snipaste_2022-04-12_16-48-39.png)
+![Snipaste_2022-04-12_16-48-39](../pictures/Snipaste_2022-04-12_16-48-39.png)
 
 此时如果使用PyCharm来运行这个main.py文件,你会发现PyCharm运行程序毫无问题：
 
-![Snipaste_2022-04-12_16-52-19](C:\Users\Administrator\Desktop\Snipaste_2022-04-12_16-52-19.png)
+![Snipaste_2022-04-12_16-52-19](../pictures/Snipaste_2022-04-12_16-52-19.png)
 
 ### **原因:**
 
@@ -47,8 +47,9 @@ Python有一个工作区的概念，在默认情况下，当你使用 python xxx
 
 只需将当前目录设置为source 根目录即可
 
-![Snipaste_2022-04-12_17-01-30](C:\Users\Administrator\Desktop\Snipaste_2022-04-12_17-01-30.png)
+![Snipaste_2022-04-12_17-01-30](../pictures/Snipaste_2022-04-12_17-01-30.png)
 
 回到PyCharm，发现它已经可以正确找到 login.py文件了。如下图所示，红色波浪线消失。
 
-![Snipaste_2022-04-12_17-03-08](C:\Users\Administrator\Desktop\Snipaste_2022-04-12_17-03-08.png)
+![Snipaste_2022-04-12_17-03-08](../pictures/Snipaste_2022-04-12_17-03-08.png)
+
