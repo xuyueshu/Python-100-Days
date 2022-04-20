@@ -2,7 +2,7 @@
 
 
 
-![](../pictures/1729999-20191203202531087-1176056364.png)
+![](../../pictures/1729999-20191203202531087-1176056364.png)
 
 # 什么是mock
 
@@ -184,7 +184,7 @@ print(mock_obj.name)
 
 assert_called_with(参数arg)：检查函数调用参数是否正确
 
-```
+```python
 from unittest.mock import Mock
 class Foo(object):
     value = 20

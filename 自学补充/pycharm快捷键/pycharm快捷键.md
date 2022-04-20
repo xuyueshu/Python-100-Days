@@ -1,18 +1,12 @@
-<img src="pc.svg" style="width:70px;float:left">
-
 # PyCharm快捷键
 
 
-
--------------------------------------------------
 
 
 
 | 在 IDE 中查找任何操作 | Ctrl + Shift + A |
 | ------------- | ---------------- |
 |               |                  |
-
-
 
 
 | 创建和编辑       |                                 |
@@ -180,6 +174,3 @@
 | 切换临时行断点         |  Ctrl + Alt + Shift + F8   |
 | 编辑 / 查看断点       |     Ctrl + Shift + F8      |
 
-<div style="width=10px;height=6px;color:orange;">6597<p style="color:white;">jetbrains.com/pycharm</br>jetbrains.com/help/pycharm</br>blog.jetbrains.com/pycharm</br>@pycharm</p></div>
-
-<img src="1jetbrains.svg" style="width:70px;float:right">
