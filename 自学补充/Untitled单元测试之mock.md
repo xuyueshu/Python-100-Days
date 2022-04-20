@@ -1,5 +1,9 @@
 # Untitled单元测试之mock
 
+
+
+![](../pictures/1729999-20191203202531087-1176056364.png)
+
 # 什么是mock
 
 unittest.mock是一个用于在Python中进行单元测试的库，Mock翻译过来就是模拟的意思，顾名思义这个库的主要功能是模拟一些东西。
@@ -92,3 +96,123 @@ if __name__ == "__main__":
 
 ```
 
+### 4.mock中的方法
+
+```
+from unittest.mock import Mock
+mock_obj = Mock() # 实例化Mock对象
+print(dir(mock_obj))
+# ['assert_any_call', 'assert_called', 'assert_called_once', 'assert_called_once_with', 'assert_called_with', 'assert_has_calls', 'assert_not_called', 'attach_mock', 'call_args', 'call_args_list', 'call_count', 'called', 'configure_mock', 'method_calls', 'mock_add_spec', 'mock_calls', 'reset_mock', 'return_value', 'side_effect']
+
+```
+
+### 5.Mock中的构造方法
+
+```
+from unittest.mock import Mock
+print(dir(Mock))
+# ['_NonCallableMock__get_return_value', '_NonCallableMock__get_side_effect', '_NonCallableMock__return_value_doc', '_NonCallableMock__set_return_value', '_NonCallableMock__set_side_effect', '__call__', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattr__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_call_matcher', '_extract_mock_name', '_format_mock_call_signature', '_format_mock_failure_message', '_get_child_mock', '_mock_add_spec', '_mock_call', '_mock_check_sig', '_mock_return_value', '_mock_side_effect', 'assert_any_call', 'assert_called', 'assert_called_once', 'assert_called_once_with', 'assert_called_with', 'assert_has_calls', 'assert_not_called', 'attach_mock', 'call_args', 'call_args_list', 'call_count', 'called', 'configure_mock', 'mock_add_spec', 'mock_calls', 'reset_mock', 'return_value', 'side_effect']
+```
+
+#### 6.name
+
+name:mock对象的标识
+
+```
+from unittest import mock
+mock_obj = Mock(name = 'xxx')
+print(f'name标识{mock_obj}')
+# name标识<Mock name='xxx' id='4445533296'>
+
+```
+
+#### 7.return_value(用的最多)
+
+return_value：该参数指定一个值或者对象
+
+```
+from unittest import mock
+mock_obj1 = mock.Mock(return_value=100)
+print(f'return_value 指定值{mock_obj1()}')
+# return_value 指定值100
+
+```
+
+#### 8.side_effect
+
+side_effect：该参数指向一个可调用对象（一般是函数）
+当mock对象被调用时,如果该参数的返回值是默认的DEFAULT,则mock对象返回return_value指定的值;
+否则返回side_effect指定的对象的返回值
+
+```
+from unittest import mock
+mock_obj2 = mock.Mock(return_value=100, side_effect=None)
+print(f'side_effect 默认值为None,输出return_values的值{mock_obj2()}')
+# side_effect 默认值为None,输出return_values的值100
+
+mock_obj3 = mock.Mock(return_value=100, side_effect=[200, 300])
+print(f'side_effect 指定值{mock_obj3()},return_value的值被覆盖')
+# side_effect 指定值200,return_value被覆盖
+print(f'side_effect 迭代输出指定值{mock_obj3()}')
+# side_effect 迭代输出指定值300
+
+```
+
+#### 9.spec
+
+spec：mock对象的属性值
+
+```
+from unittest.mock import Mock
+class Foo(object):
+    age = 20
+    def f1(self):
+        return 
+    def f2(self, name):
+        return name
+mock_obj = Mock(spec=Foo)
+print(mock_obj.age) 
+# <Mock name='mock.age' id='4541307032'>
+print(mock_obj.name) 
+# AttributeError: Mock object has no attribute 'name' 没有name属性
+
+```
+
+### 10.mock 断言
+
+#### 1.assert_called_with()
+
+assert_called_with(参数arg)：检查函数调用参数是否正确
+
+```
+from unittest.mock import Mock
+class Foo(object):
+    value = 20
+    def f1(self, arg):
+        return arg
+mock_obj = Mock(spec=Foo)
+# f1正确的传参姿势
+mock_obj.f1(222)
+# mock_obj.f1.assert_called_with()  
+# 报错，没有传参
+# mock_obj.f1.assert_called_with(11)  
+# 报错，应该传222,传了11
+# mock_obj.f1.assert_called_with(222)  
+# 不报错
+
+```
+
+#### 2.assert_called_once_with()
+
+assert_called_once_with(参数arg)：检查函数调用参数是否正确，但是只调用一次
+
+```
+from unittest.mock import Mock
+mock = Mock()
+mock()
+mock.assert_called_once_with()
+# 不会报错
+mock()
+mock.assert_called_once_with() 
+# AssertionError: Expected 'mock' to be called once. Called 2 times.
+```
